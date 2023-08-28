@@ -32,6 +32,9 @@ class EmpleadoController extends Controller
     {
         //
         $datosLaravel=request()->except('_token');
+        if($request->hasFile('Foto')){
+            $datosLaravel['Foto']=$request->file('Foto')->store('uploads','public');
+        }
         Empleado:: insert($datosLaravel);
         return response()->json($datosLaravel);
     }
