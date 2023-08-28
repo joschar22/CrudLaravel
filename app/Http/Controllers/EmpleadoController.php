@@ -31,7 +31,8 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         //
-        $datosLaravel=$request->all();
+        $datosLaravel=request()->except('_token');
+        Empleado:: insert($datosLaravel);
         return response()->json($datosLaravel);
     }
 
