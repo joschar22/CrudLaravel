@@ -31,6 +31,8 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         //
+        $datosLaravel=$request->all();
+        return response()->json($datosLaravel);
     }
 
     /**

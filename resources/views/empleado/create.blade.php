@@ -1,5 +1,6 @@
 formulario de creacion de empleado
-<form action="" method="post" enctype="multipart/form-data"><br>
+<form action="{{url('/empleado')}}" method="post" enctype="multipart/form-data"><br>
+@csrf
 <label for="Nombre">Nombre</label>
 <input type="text" name="Nombre" id="Nombre "><br>
 
