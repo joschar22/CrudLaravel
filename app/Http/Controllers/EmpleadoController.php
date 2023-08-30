@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
+
 class EmpleadoController extends Controller
 {
     /**
@@ -65,6 +68,12 @@ class EmpleadoController extends Controller
     {
         //
         $datosLaravel=request()->except(['_token','_method']);
+
+        if($request->hasFile('Foto')){
+            $empleado=Empleado::findOrFail($id);
+            Storage::delete('public/'.$empleado->Foto);
+            $datosLaravel['Foto']=$request->file('Foto')->store('uploads','public');
+        }
         Empleado:: where('id','=', $id)->update($datosLaravel);
 
         $empleado=Empleado::findOrFail($id);
