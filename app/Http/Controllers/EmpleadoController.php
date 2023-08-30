@@ -51,18 +51,24 @@ class EmpleadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Empleado $empleado)
+    public function edit( $id)
     {
         //
-        return view('empleado.edit');
+        $empleado=Empleado::findOrFail($id);
+        return view('empleado.edit',compact('empleado'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Empleado $empleado)
+    public function update(Request $request,  $id)
     {
         //
+        $datosLaravel=request()->except(['_token','_method']);
+        Empleado:: where('id','=', $id)->update($datosLaravel);
+
+        $empleado=Empleado::findOrFail($id);
+        return view('empleado.edit',compact('empleado'));
     }
 
     /**

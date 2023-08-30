@@ -26,7 +26,7 @@ mostrar la lista de empleados
             <td>{{ $empleado->Correo }}</td>
            
             <td> <a href="{{ url('/empleado/'.$empleado->id.'/edit') }}"> Editar </a>  | 
-                <form action="{{  url('/empleado/'.$empleado->id)}}" method="post">@csrf
+                <form action="{{  url('/empleado/'.$empleado->id) }}" method="post">@csrf
                     {{ method_field('DELETE')}}
                     <input type="submit" onclick="return confirm('Do you want Delete?')" value="Borrar ">
                 </form>
