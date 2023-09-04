@@ -87,7 +87,11 @@ class EmpleadoController extends Controller
     {
         //
 
-        Empleado:: destroy($id);
+        $empleado=Empleado::findOrFail($id);
+        if (Storage::delete('public/'.$empleado->Foto)) {
+            Empleado:: destroy($id);
+        }
+        
         return redirect('empleado');
     }
 }
