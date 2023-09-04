@@ -18,4 +18,8 @@ c
 @endif
 <input type="file" name="Foto" value="" id="Foto"><br>
 
-<input type="submit" value="Enviar"><br>
+<input type="submit" value="Enviar">
+
+<a href="{{ url('empleado/') }}"> Regresar</a>
+
+<br>
