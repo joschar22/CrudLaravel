@@ -40,7 +40,8 @@ class EmpleadoController extends Controller
             $datosLaravel['Foto']=$request->file('Foto')->store('uploads','public');
         }
         Empleado:: insert($datosLaravel);
-        return response()->json($datosLaravel);
+        //return response()->json($datosLaravel);
+        return redirect('empleado')->with('mensaje', 'Empleado registrado con éxito');
     }
 
     /**
@@ -92,6 +93,6 @@ class EmpleadoController extends Controller
             Empleado:: destroy($id);
         }
         
-        return redirect('empleado');
+        return redirect('empleado')->with('mensaje', 'Empleado Borrado con éxito');
     }
 }
